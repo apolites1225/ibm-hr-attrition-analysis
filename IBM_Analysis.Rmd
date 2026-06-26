@@ -1,0 +1,74 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+hrdata <- read.csv("HR-Employee-Attrition.csv")
+```
+
+```{r}
+# Create a list of numeric columns
+
+num_cols <- c("Age", "DailyRate", "DistanceFromHome", "Education", "HourlyRate", "MonthlyIncome", "MonthlyRate", "NumCompaniesWorked", "TotalWorkingYears", "TrainingTimesLastYear")
+```
+
+```{r}
+# Filter the data
+
+hrdata_num <- hrdata[ , num_cols]
+```
+
+```{r}
+# Run the correlation matrix
+
+cor(hrdata_num)
+```
+
+```{r}
+pairs(~MonthlyIncome+Age+Education, data = hrdata, main = "Scatterplot Matrix")
+```
+```{r}
+# Better matrix for numeric pairs
+pairs(~ MonthlyIncome + Age + TotalWorkingYears, data = hrdata, main = "Scatterplot Matrix")
+
+```
+
+```{r}
+boxplot(Age ~ Attrition,
+    data = hrdata,
+    main = "Age Distribution by Attrition",
+    xlab = "Attrition Status", ylab = "Age")
+```
+
+```{r}
+yes_age <- hrdata[(hrdata$Attrition == "Yes"), 'Age']
+no_age <- hrdata[(hrdata$Attrition != "Yes"), 'Age']
+```
+
+```{r}
+t.test(yes_age, no_age)
+```
+
+
+```{r}
+yes_empno <- hrdata[(hrdata$Attrition == "Yes"), 'EmployeeNumber']
+no_empno <- hrdata[(hrdata$Attrition != "Yes"), 'EmployeeNumber']
+```
+
+```{r}
+t.test(yes_empno, no_empno)
+```
+
+```{r}
+model1 = lm(MonthlyIncome ~ Age, data = hrdata)
+summary(model1)
+```
+```{r}
+# Create a model with two inputs
+model2 <- lm(MonthlyIncome ~ Age + TotalWorkingYears, data = hrdata)
+
+# See the results
+summary(model2)
+```
+
