@@ -31,9 +31,6 @@ cor(hrdata_num)
 ```
 
 ```{r}
-pairs(~MonthlyIncome+Age+Education, data = hrdata, main = "Scatterplot Matrix")
-```
-```{r}
 # Better matrix for numeric pairs
 pairs(~ MonthlyIncome + Age + TotalWorkingYears, data = hrdata, main = "Scatterplot Matrix")
 
