@@ -31,9 +31,9 @@ Reduced 35 variables to a focused set of numeric predictors and built a correlat
 ### 2. Scatterplot Matrix
 Visualized relationships between `MonthlyIncome`, `Age`, and `TotalWorkingYears`. Income rises with both, but the relationship with experience is stronger.
 
-![Scatterplot Code](images/03_scatterplot_code.png)
+![Scatterplot Code](images/03_scatterplot_income_age_workingyears.png)
 
-![Scatterplot Matrix](images/04_scatterplot_matrix.png)
+![Scatterplot Matrix](images/04_scatterplot_income_age_workingyears.png)
 
 ### 3. Attrition Signal Testing
 Used boxplots and Welch two-sample t-tests to compare employees who left vs. stayed. Key finding: employees who left skewed significantly younger (p < 0.05). As a null control, the same test on `EmployeeNumber` returned no significant result.
@@ -52,11 +52,12 @@ Used boxplots and Welch two-sample t-tests to compare employees who left vs. sta
 
 ### 4. Regression Modeling
 - **Model 1:** `MonthlyIncome ~ Age`
-- **Model 2:** `MonthlyIncome ~ Age + TotalWorkingYears`
 
 ![Model 1 Code](images/11_model1_code.png)
 
 ![Model 1 Output](images/12_model1_output.png)
+
+- **Model 2:** `MonthlyIncome ~ Age + TotalWorkingYears`
 
 ![Model 2 Code](images/13_model2_code.png)
 
